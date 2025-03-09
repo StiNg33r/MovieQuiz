@@ -1,6 +1,6 @@
 import UIKit
 
-class AlertPresenter: AlertPresenterProtocol{
+final class AlertPresenter: AlertPresenterProtocol {
     weak var delegate: AlertPresenterDelegate?
     
     
@@ -9,13 +9,19 @@ class AlertPresenter: AlertPresenterProtocol{
     }
     
     func showAlert(model: AlertModel){
-        let alert = UIAlertController(title: model.title,
-                                      message: model.message,
-                                      preferredStyle: .alert)
-        let action = UIAlertAction(title: model.buttonText, style: .default) { _ in
+        let alert = UIAlertController(
+            title: model.title,
+            message: model.message,
+            preferredStyle: .alert
+        )
+        let action = UIAlertAction(
+            title: model.buttonText,
+            style: .default
+        ) { _ in
             model.completion?()
         }
         alert.addAction(action)
-        delegate?.present(alert, animated: true, completion: nil)
+        delegate?.showAlert(alert: alert)
+        
     }
 }

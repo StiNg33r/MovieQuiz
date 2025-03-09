@@ -1,13 +1,5 @@
 import UIKit
 
-
-
-
-
-
-
-
-
 final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate, AlertPresenterDelegate {
     
     
@@ -49,14 +41,10 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate, 
         }
     }
     
-//    // MARK: - AlertPresenterDelegate
-//    func didReceiveAlert() {
-////        currentQuestionIndex = 0
-////        correctAnswers = 0
-////        
-////        questionFactory?.requestNextQuestion()
-//        return
-//    }
+    // MARK: - AlertPresenterDelegate
+    func showAlert(alert: UIAlertController) {
+        present(alert, animated: true, completion: nil)
+    }
     
     
     
