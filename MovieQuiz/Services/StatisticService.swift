@@ -14,7 +14,7 @@ final class StatisticService: StatisticServiceProtocol {
     
     var gamesCount: Int {
         get {storage.integer(forKey: Keys.gamesCount.rawValue)}
-        set{storage.set(newValue, forKey: Keys.gamesCount.rawValue)}
+        set {storage.set(newValue, forKey: Keys.gamesCount.rawValue)}
     }
     var correctAnswers: Int {
         get {storage.integer(forKey: Keys.correctAnswers.rawValue)}
