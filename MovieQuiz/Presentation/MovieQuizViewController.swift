@@ -5,13 +5,11 @@ final class MovieQuizViewController: UIViewController,
                                      AlertPresenterDelegate {
     
     
-//    private let questionsAmount: Int = 10
-
+    
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var textLabel: UILabel!
     @IBOutlet private var counterLabel: UILabel!
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
-//    private var currentQuestionIndex = 0
     private var correctAnswers = 0
     private var questionIsShowed = true
     private var questionFactory: QuestionFactoryProtocol?
@@ -25,12 +23,12 @@ final class MovieQuizViewController: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //questionFactory = QuestionFactory(delegate: self, moviesLoader: MoviesLoader())
         alertPresenter = AlertPresenter(delegate: self)
         questionFactory = QuestionFactory(delegate: self, moviesLoader: MoviesLoader(networkClient: NetworkClient()), alertPresenter: alertPresenter ?? AlertPresenter(delegate: self))
         statisticService = StatisticService()
         showLoadingIndicator()
         questionFactory?.requestNextQuestion()
+        presenter.viewController = self
         imageView.layer.cornerRadius = 20
     }
     
@@ -42,7 +40,6 @@ final class MovieQuizViewController: UIViewController,
         currentQuestion = question
         questionIsShowed = true
         
-        //let viewModel = convert(model: question)
         
         let viewModel = presenter.convert(model: question)
         
@@ -68,15 +65,6 @@ final class MovieQuizViewController: UIViewController,
             self?.present(alert, animated: true, completion: nil)
         }
     }
-    
-//    private func convert(model: QuizQuestion) -> QuizStepViewModel {
-//      let questionStep = QuizStepViewModel(
-//        image : UIImage(data: model.image) ?? UIImage(),
-//        question: model.text,
-//        questionNumber: "\(currentQuestionIndex+1)/\(questionsAmount)"
-//      )
-//        return questionStep
-//    }
     
     private func showLoadingIndicator() {
         DispatchQueue.main.async { [weak self] in
@@ -122,7 +110,7 @@ final class MovieQuizViewController: UIViewController,
     }
     
     
-    private func showAnswerResult (isCorrect: Bool){
+    func showAnswerResult (isCorrect: Bool){
         imageView.layer.masksToBounds = true
         imageView.layer.borderWidth = 8
         if isCorrect{
@@ -184,22 +172,28 @@ final class MovieQuizViewController: UIViewController,
     }
     
     @IBAction private func yesButtonClicked(_ sender: UIButton) {
-        guard let question = currentQuestion else {return}
-        if questionIsShowed{
-            showAnswerResult(isCorrect: question.correctAnswer == true)
+        if questionIsShowed {
+            presenter.currentQuestion = currentQuestion
+            presenter.yesButtonClicked()
         }
-
     }
     
     @IBAction private func noButtonClicked(_ sender: UIButton) {
-        guard let question = currentQuestion else {return}
-        if questionIsShowed{
-            showAnswerResult(isCorrect: question.correctAnswer == false)
+        if questionIsShowed {
+            presenter.currentQuestion = currentQuestion
+            presenter.noButtonClicked()
         }
     }
 }
 
 
+//@IBAction private func noButtonClicked(_ sender: UIButton) {
+//    guard let question = currentQuestion else {return}
+//    if questionIsShowed {
+//        showAnswerResult(isCorrect: question.correctAnswer == false)
+//    }
+//}
+//}
 
 
 /*
