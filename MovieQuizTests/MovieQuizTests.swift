@@ -8,27 +8,6 @@
 import Testing
 import XCTest
 
-//struct MovieQuizTests {
-//
-//    @Test func example() async throws {
-//        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
-//    }
-//
-//}
-
-//struct ArithmeticOperations {
-//    func addition(num1: Int, num2: Int) -> Int {
-//        return num1 + num2
-//    }
-//    
-//    func subtraction(num1: Int, num2: Int) -> Int {
-//        return num1 - num2
-//    }
-//    
-//    func multiplication(num1: Int, num2: Int) -> Int {
-//        return num1 * num2
-//    }
-//}
 
 
 struct ArithmeticOperations {

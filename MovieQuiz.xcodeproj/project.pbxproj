@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4A22F9002D81CA9200762215 /* MovieQuizPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22F8FF2D81CA8900762215 /* MovieQuizPresenter.swift */; };
+		4A22F9022D820F7F00762215 /* MovieQuizViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22F9012D820F7200762215 /* MovieQuizViewControllerProtocol.swift */; };
 		4A5783922D7B77E300693C7C /* QuestionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5783912D7B77E000693C7C /* QuestionFactory.swift */; };
 		4A5783972D7B7CB800693C7C /* QuizQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5783962D7B7CB400693C7C /* QuizQuestion.swift */; };
 		4A57839B2D7B7CDF00693C7C /* QuizStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A57839A2D7B7CDE00693C7C /* QuizStepViewModel.swift */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		4A22F8FF2D81CA8900762215 /* MovieQuizPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuizPresenter.swift; sourceTree = "<group>"; };
+		4A22F9012D820F7200762215 /* MovieQuizViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuizViewControllerProtocol.swift; sourceTree = "<group>"; };
 		4A4F7A592D80CD9300FCE631 /* MovieQuizTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieQuizTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A5783912D7B77E000693C7C /* QuestionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionFactory.swift; sourceTree = "<group>"; };
 		4A5783962D7B7CB400693C7C /* QuizQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestion.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 		8F4738322848DE2A005DF65E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				4A22F9012D820F7200762215 /* MovieQuizViewControllerProtocol.swift */,
 				4A22F8FF2D81CA8900762215 /* MovieQuizPresenter.swift */,
 				4A5783B02D7BB18F00693C7C /* AlertPresenterDelegate.swift */,
 				4A5783AE2D7BB13400693C7C /* AlertPresenterProtocol.swift */,
@@ -375,6 +378,7 @@
 			files = (
 				AD5EE5DE284D7887003966EF /* UIColor+Extensions.swift in Sources */,
 				4A5783AB2D7BB03F00693C7C /* AlertPresenter.swift in Sources */,
+				4A22F9022D820F7F00762215 /* MovieQuizViewControllerProtocol.swift in Sources */,
 				4A5783B12D7BB19400693C7C /* AlertPresenterDelegate.swift in Sources */,
 				AD7AFA552836189F00399704 /* Array+Extensions.swift in Sources */,
 				4A84EBFB2D7C83640035EE8B /* StatisticServiceProtocol.swift in Sources */,

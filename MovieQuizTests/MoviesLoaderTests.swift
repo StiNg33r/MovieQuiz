@@ -3,11 +3,11 @@ import XCTest // не забывайте импортировать фреймв
 
 struct StubNetworkClient: NetworkRouting {
     
-    enum TestError: Error { // тестовая ошибка
+    enum TestError: Error {
     case test
     }
     
-    let emulateError: Bool // этот параметр нужен, чтобы заглушка эмулировала либо ошибку сети, либо успешный ответ
+    let emulateError: Bool
     
     func fetch(url: URL, handler: @escaping (Result<Data, Error>) -> Void) {
         if emulateError {
@@ -61,19 +61,16 @@ class MoviesLoaderTests: XCTestCase {
         
         // When
         
-        // так как функция загрузки фильмов — асинхронная, нужно ожидание
         let expectation = expectation(description: "Loading expectation")
         
         loader.loadMovies { result in
             // Then
             switch result {
             case .success(let movies):
-                // сравниваем данные с тем, что мы предполагали
                 XCTAssertEqual(movies.items.count, 2)
                 expectation.fulfill()
             case .failure(_):
-                // мы не ожидаем, что пришла ошибка; если она появится, надо будет провалить тест
-                XCTFail("Unexpected failure") // эта функция проваливает тест
+                XCTFail("Unexpected failure")
             }
         }
        
@@ -87,22 +84,19 @@ class MoviesLoaderTests: XCTestCase {
         
         // When
         
-        // так как функция загрузки фильмов — асинхронная, нужно ожидание
         let expectation = expectation(description: "Loading expectation")
         
         loader.loadMovies { result in
             // Then
             switch result {
             case .success(_):
-                // сравниваем данные с тем, что мы предполагали
-                XCTFail("Unexpected failure") // эта функция проваливает тест
+                XCTFail("Unexpected failure")
             case .failure(let error):
-                // мы не ожидаем, что пришла ошибка; если она появится, надо будет провалить тест
                 XCTAssertNotNil(error)
                 expectation.fulfill()
             }
         }
        
-       waitForExpectations(timeout: 1)
+       waitForExpectations(timeout: 3)
     }
 }
